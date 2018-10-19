@@ -19,10 +19,9 @@ public class ClassListener implements ITestListener {
 
     @Attachment(value = "Information", type = "text/plain")
     private String sendInfo() {
-        String message = "";
-        message += ("Date and Time: " + LocalDate.now() + "; " + LocalTime.now() + "\n");
-        message += ("Browser name: " + ((RemoteWebDriver) Driver.getDriver().get()).getCapabilities().getBrowserName() + "; \n");
-        message += ("Browser version: " + ((RemoteWebDriver) Driver.getDriver().get()).getCapabilities().getVersion() + "; ");
+        String message = "Date and Time: " + LocalDate.now() + "; " + LocalTime.now() + "\n" +
+                "Browser name: " + ((RemoteWebDriver) Driver.getDriver().get()).getCapabilities().getBrowserName() + "; \n" +
+                "Browser version: " + ((RemoteWebDriver) Driver.getDriver().get()).getCapabilities().getVersion() + "; ";
         return message;
     }
 

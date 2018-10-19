@@ -31,10 +31,11 @@ class InboxPage extends Page {
     private List<WebElement> letters;
     @FindBy(css = "[aria-label='Delete']")
     private List<WebElement> deleteButtons;
+    static final String LETTER_BY_SUBJECT = ".//span[text()='%s']";
+
 
     InboxPage() {
         super(TITLE);
-        Waiter.implicitWait(5 * 1000);
         PageFactory.initElements(driver, this);
         Waiter.waitForElement(accountButton, 5);
     }

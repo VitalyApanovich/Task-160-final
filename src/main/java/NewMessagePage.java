@@ -1,8 +1,6 @@
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 class NewMessagePage extends Page {
     private final static String TITLE = "New Message";
@@ -14,6 +12,8 @@ class NewMessagePage extends Page {
     private WebElement sendButton;
     @FindBy(css = ".editable")
     private WebElement messageArea;
+    @FindBy(xpath = "//span[text()='Message sent.']")
+    WebElement sentMessagePopup;
 
     NewMessagePage() {
         super(TITLE);
@@ -26,11 +26,7 @@ class NewMessagePage extends Page {
         subjectInputBox.sendKeys(subject);
         messageArea.sendKeys(message);
         sendButton.click();
-        try {
-            Thread.sleep(5*1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Waiter.waitForElement(sentMessagePopup, 5*1000);
     }
 
 }
